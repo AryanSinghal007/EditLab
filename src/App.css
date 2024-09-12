@@ -101,7 +101,7 @@ footer a:hover {
 }
 
 .aside {
-  background: #1c1e29;
+  background: #14161f;
   padding: 16px;
   color: #fff;
   display: flex;
@@ -115,7 +115,7 @@ footer a:hover {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 17px;
 }
 
 .client {
@@ -135,6 +135,8 @@ img{
 .logo {
   border-bottom: 1px solid #424242;
   padding-bottom: 10px;
+  width: 100%;
+  height: auto;
 }
 
 .logoImage {
@@ -143,12 +145,17 @@ img{
 
 .leaveBtn {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
+}
+
+.copyBtn {
+  width: 100%;
+  margin-top: 485px;
 }
 
 .CodeMirror {
-  min-height: calc(100vh - 20px);
-  font-size: 20px;
+  min-height: calc(1020px);
+  font-size: 18px;
   line-height: 1.6;
-  padding-top: 20px;
+  padding-top: 10px;
 }
