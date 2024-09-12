@@ -2,10 +2,26 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home';
 import EditorPage from './Pages/EditorPage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <>
+      <div>
+        <Toaster
+          position='top-right'
+          toastOptions={
+            {
+              success: {
+                theme: {
+                  primary: '#cb6ce6',
+                }
+              }
+            }
+          }
+        >
+        </Toaster>
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element = {<Home/>}></Route>
