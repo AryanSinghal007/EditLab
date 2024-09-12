@@ -7,10 +7,10 @@ const Home = () => {
 
     const navigate = useNavigate();
     const [roomId, setRoomId] = useState('');
-    const [userName, setUserName] = useState('');
+    const [username, setUserName] = useState('');
 
     const joinRoom = () => {
-        if(!roomId || !userName) {
+        if(!roomId || !username) {
             toast.error('Room ID/UserName is required');
             return;
         }
@@ -19,7 +19,7 @@ const Home = () => {
         // second parameter is an object that is used to pass state from one page to other
         navigate(`/editor/${roomId}`, {
             state : {
-                userName,
+                username,
             }
         })
     }
@@ -61,7 +61,7 @@ const Home = () => {
                             className="inputBox" 
                             placeholder="USERNAME"
                             onChange={(e) => setUserName(e.target.value)}
-                            value = {userName}
+                            value = {username}
                             onKeyUp={handleInputEnter}
                         />
                         <button onClick = {joinRoom} className="btn joinBtn">JOIN</button>
