@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const http = require('http');
+const path = require('path');
 const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
 
@@ -40,6 +41,34 @@ io.on('connection', (socket) => {
         socketId: socket.id,
       });
     });
+  });
+
+  socket.on(ACTIONS.CODE_CHANGE, ({roomId, code}) => {
+    // console.log('Debug: Recieving', code);
+    socket.in(roomId).emit(ACTIONS.CODE_CHANGE, {
+      code
+    });
+  });
+
+  // socket.on(ACTIONS.SYNC_CODE, ({socketId, code}) => {
+  //   io.to(roomId).emit(ACTIONS.SYNC_CODE, {
+  //     code
+  //   });
+  // });
+
+  // before actual disconnect
+  socket.on('disconnecting', () => {
+    const rooms = [...socket.rooms];
+    rooms.forEach((roomId) => {
+      socket.in(roomId).emit(ACTIONS.DISCONNECTED, {
+        socketId: socket.id,
+        username: userSocketMap[socket.id],
+      });
+    });
+
+    // delete that socket id from map
+    delete userSocketMap[socket.id];
+    socket.leave();
   });
 });
 
