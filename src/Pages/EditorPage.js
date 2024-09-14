@@ -45,8 +45,8 @@ const EditorPage = () => {
                         }
                         setClients(clients);
                         socketRef.current.emit(ACTIONS.SYNC_CODE, {
-                            code: codeRef.current,
                             socketId,
+                            code: codeRef.current,
                         });
                     }
                 );
@@ -74,6 +74,8 @@ const EditorPage = () => {
                 socketRef.current.disconnect();
                 socketRef.current.off(ACTIONS.JOINED);
                 socketRef.current.off(ACTIONS.DISCONNECTED);
+                socketRef.current.off('connect_error');
+                socketRef.current.off('connect_failed');
             }
         };
     },[]);
