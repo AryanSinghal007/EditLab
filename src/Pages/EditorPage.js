@@ -10,7 +10,7 @@ import { toast } from 'react-hot-toast';
 const EditorPage = () => {
 
     const [clients, setClients] = useState([]);
-
+    const codeRef = useRef(null);
     const socketRef = useRef(null);
     const location = useLocation();
     const reactNavigator = useNavigate();
@@ -44,6 +44,10 @@ const EditorPage = () => {
                             console.log(`${username} joined`);
                         }
                         setClients(clients);
+                        socketRef.current.emit(ACTIONS.SYNC_CODE, {
+                            code: codeRef.current,
+                            socketId,
+                        });
                     }
                 );
     
@@ -72,7 +76,7 @@ const EditorPage = () => {
                 socketRef.current.off(ACTIONS.DISCONNECTED);
             }
         };
-    }, [location.state, roomId, reactNavigator]);    
+    },[]);
 
     if(!location.state){
         <Navigate to="/" />
@@ -120,9 +124,9 @@ const EditorPage = () => {
                 <Editor
                     socketRef={socketRef}
                     roomId={roomId}
-                    // onCodeChange={(code) => {
-                    //     codeRef.current = code;
-                    // }}
+                    onCodeChange={(code) => {
+                        codeRef.current = code;
+                    }}
                 />
             </div>
         </div>

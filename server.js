@@ -44,17 +44,17 @@ io.on('connection', (socket) => {
   });
 
   socket.on(ACTIONS.CODE_CHANGE, ({roomId, code}) => {
-    // console.log('Debug: Recieving', code);
+    console.log('Debug: Recieving', code);
     socket.in(roomId).emit(ACTIONS.CODE_CHANGE, {
       code
     });
   });
 
-  // socket.on(ACTIONS.SYNC_CODE, ({socketId, code}) => {
-  //   io.to(roomId).emit(ACTIONS.SYNC_CODE, {
-  //     code
-  //   });
-  // });
+  socket.on(ACTIONS.SYNC_CODE, ({socketId, code}) => {
+    io.to(socketId).emit(ACTIONS.SYNC_CODE, {
+      code
+    });
+  });
 
   // before actual disconnect
   socket.on('disconnecting', () => {
