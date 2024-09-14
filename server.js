@@ -10,7 +10,7 @@ const io = new Server(server);
 
 const cors = require('cors');
 app.use(cors({
-  origin: 'https://edit-lab.vercel.app/',
+  origin: 'https://edit-lab.vercel.app',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
