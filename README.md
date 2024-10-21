@@ -20,13 +20,13 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    git clone https://github.com/AryanSinghal007/EditLab.git
    cd edit-lab
-3. Install the dependencies:
+2. Install the dependencies:
    ```bash
    npm install
-4. Start the development server:
+3. Start the development server:
    ```bash
-   npm run start:front
-Open http://localhost:3000 in your browser to view the app.
+   npm start
+4. Open http://localhost:5000 in your browser to view the app.
 
 ## Available Scripts
 
