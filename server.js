@@ -8,12 +8,12 @@ const ACTIONS = require('./src/Actions');
 const server = http.createServer(app);
 const io = new Server(server);
 
-const cors = require('cors');
-app.use(cors({
-  origin: 'https://edit-lab.vercel.app',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
-}));
+// const cors = require('cors');
+// app.use(cors({
+//   origin: 'https://edit-lab.com',
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type']
+// }));
 
 
 app.use(express.static('build'));
